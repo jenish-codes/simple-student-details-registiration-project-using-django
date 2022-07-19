@@ -1,0 +1,12 @@
+
+
+
+<div class="form-box">
+    <form action="{% url 'update' student.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>

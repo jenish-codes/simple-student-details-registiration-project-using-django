@@ -1,0 +1,33 @@
+
+
+
+<div class="details-table">
+    <table>
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Marks</th>
+                <th>Mother Tongue</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in students %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.marks }}</td>
+                <td>{{ i.mother_tongue }}</td>
+                <td>{{ i.department }}</td>
+                <td>
+                    <a href="{% url 'update' i.id %}">Edit</a>
+                    <a href="{% url 'delete' i.id %}">Delete</a>
+                </td>
+            {% empty %}
+                <td colspan="5">Empty!</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

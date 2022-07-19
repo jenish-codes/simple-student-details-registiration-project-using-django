@@ -1,5 +1,11 @@
 
 
-<form action="">
-    
-</form>
+<div class="form-box">
+    <form action="{% url 'home' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
