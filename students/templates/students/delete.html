@@ -1,0 +1,14 @@
+
+
+<div class="delete">
+    <div class="form-box">
+        <form action="{% url 'delete' student.id %}" method="post">
+            {% csrf_token %}
+            <p>Confirm Delete? <small>Note: This data can't be recovered!</small></p>
+            {{ form.as_p }}
+            <div class="button">
+                <input type="submit" value="Delete">
+            </div>
+        </form>
+    </div>
+</div>

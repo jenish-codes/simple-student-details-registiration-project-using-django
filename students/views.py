@@ -45,8 +45,17 @@ class Update(View):
         return redirect("details")
 
 
+class Delete(View):
+    def get(self, request, id):
+        student = Student.objects.get(id=id)
+        form = AddStudent(instance=student)
+        context = {
+            'student' : student,
+            'form' : form,
+        }
+        return render(request, "students/delete.html", context)
 
-def delete(request, id):
-    student = Student.objects.get(id=id)
-    student.delete()
-    return redirect("details")
+    def post(self, request, id):
+        student = Student.objects.get(id=id)
+        student.delete()
+        return redirect("details")
