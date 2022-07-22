@@ -1,33 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Details</title>
+    <style>
+                *{
+            margin: 0;
+            padding: 0;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #222;
+            font-family: sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        table,th,td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
 
 
+        .edit-btn {
+            color: #333;
+            font-size: 16pt;
+            text-decoration: none;
+        }
 
-<div class="details">
-    <table>
-        <thead>
-            <tr>
-                <th>S.No</th>
-                <th>Name</th>
-                <th>Marks</th>
-                <th>Mother Tongue</th>
-                <th>Department</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in students %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ i.name }}</td>
-                <td>{{ i.marks }}</td>
-                <td>{{ i.mother_tongue }}</td>
-                <td>{{ i.department }}</td>
-                <td>
-                    <a href="{% url 'update' i.id %}">Edit</a>
-                    <a href="{% url 'delete' i.id %}">Delete</a>
-                </td>
-            {% empty %}
-                <td colspan="5">Empty!</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+        .delete-btn {
+            color: red;
+            font-size: 15pt;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="details">
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Marks</th>
+                        <th>Mother Tongue</th>
+                        <th>Department</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in students %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.marks }}</td>
+                        <td>{{ i.mother_tongue }}</td>
+                        <td>{{ i.department }}</td>
+                        <td>
+                            <a class="edit-btn" href="{% url 'update' i.id %}">&#9997;</a>
+                            <a class="delete-btn" href="{% url 'delete' i.id %}"> &#10006;</a>
+                        </td>
+                    {% empty %}
+                        <td colspan="5">Empty!</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

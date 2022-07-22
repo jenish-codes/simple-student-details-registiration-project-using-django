@@ -1,14 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            outline: none;
+            box-sizing: border-box;
+        }
 
+        body {
+            background: #222;
+            font-family: sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-<div class="delete">
-    <div class="form-box">
-        <form action="{% url 'delete' student.id %}" method="post">
-            {% csrf_token %}
-            <p>Confirm Delete? <small>Note: This data can't be recovered!</small></p>
-            {{ form.as_p }}
-            <div class="button">
-                <input type="submit" value="Delete">
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .header {
+            padding: 20px;
+            color: #222;
+            text-align: center;
+        }
+
+        .delete .confirm {
+            padding: 10px;
+            color: #fff;
+            font-weight: bolder;
+            background-color: red;
+            border-radius: 5px;
+            margin-bottom: 6px;
+        }
+
+        .delete form label {
+            display: block;
+            margin: 2px;
+        }
+
+        .delete form input, select {
+            margin-bottom: 5px;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .button {
+            text-align: center;
+        }
+
+        .delete form input[type="submit"] {
+            text-align: center;
+            width: 40% !important;
+            border: 0;
+            background-color: rgb(255, 0, 0);
+            color: #fff;
+            font-size: 12pt;
+            font-weight: bolder;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .delete form input[type="submit"]:hover {
+            background-color: rgb(190, 0, 0);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Delete Data</h2>
+        </div>
+        <div class="delete">
+            <div class="form-box">
+                <form action="{% url 'delete' student.id %}" method="post">
+                    {% csrf_token %}
+                    <p class="confirm">Confirm Delete? <small>Note: This data can't be recovered!</small></p>
+                    {{ form.as_p }}
+                    <div class="button">
+                        <input type="submit" value="Delete">
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</body>
+</html>

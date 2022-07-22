@@ -1,12 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registiration</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            outline: none;
+            box-sizing: border-box;
+        }
 
-<div class="home">    
-    <div class="form-box">
-        <form action="{% url 'home' %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <div class="button">
-                <input type="submit" value="Submit">
+        body {
+            background: #222;
+            font-family: sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .header {
+            padding: 20px;
+            color: #222;
+        }
+
+        .home form label {
+            display: block;
+            margin: 2px;
+        }
+
+        .home form input, select {
+            margin-bottom: 5px;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .button {
+            text-align: center;
+        }
+
+        .home form input[type="submit"] {
+            text-align: center;
+            width: 40% !important;
+            border: 0;
+            background-color: #222;
+            color: #fff;
+            font-size: 12pt;
+            font-weight: bolder;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .home form input[type="submit"]:hover {
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Student Registiration</h2>
+        </div>
+        <div class="home">    
+            <div class="form-box">
+                <form action="{% url 'home' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="button">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</body>
+</html>
